@@ -7,5 +7,5 @@ import (
 
 func main() {
 	fmt.Println("Day 1")
-	day01.RunPart1()
+	day01.Run()
 }
