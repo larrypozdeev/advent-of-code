@@ -1,3 +1,3 @@
-module github.com/larrypozdeev/advent-of-code-2024
+module github.com/larrypozdeev/advent-of-code/2024
 
 go 1.23.3
