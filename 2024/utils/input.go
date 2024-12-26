@@ -4,9 +4,20 @@ import (
 	"bufio"
 	"fmt"
 	"os"
+	"path/filepath"
+	"runtime"
 	"strconv"
 	"strings"
 )
+
+func ReadInputFile(target_filename string) string {
+  // 0 caller - current input.go file, 1 caller - solution.go file
+	_, filename, _, _ := runtime.Caller(1)
+	scriptDir := filepath.Dir(filename)
+
+	inputFilePath := filepath.Join(scriptDir, target_filename)
+  return inputFilePath
+}
 
 func ReadLines(fileame string) ([]string, error) {
 	file, err := os.Open(fileame)
