@@ -38,3 +38,11 @@ func RunPart1() {
 
 	fmt.Println("Part 1 result:", part1_result)
 }
+
+
+func Part2(left []int, right []int) int {
+	return 0
+}
+
+func RunPart2() {
+}
