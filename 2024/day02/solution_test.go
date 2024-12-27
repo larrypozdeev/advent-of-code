@@ -19,7 +19,10 @@ func TestPart1(t *testing.T) {
 
 	expected := 2
 
-	if result := Part1(parsed); result != expected {
+	if result, error := Part1(parsed); result != expected {
+    if error != nil {
+      t.Error(error)
+    }
 		t.Errorf("Expected %d, but got %d", expected, result)
 	}
 }
