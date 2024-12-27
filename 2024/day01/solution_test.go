@@ -13,7 +13,7 @@ func TestPart1(t *testing.T) {
 		"1   3",
 		"3   9",
 		"3   3"}
-	parsed := utils.ParseLines(data)
+	parsed := utils.ParseColumns(data)
 
 	expected := 11
 
@@ -29,7 +29,7 @@ func TestPart2(t *testing.T) {
 		"1   3",
 		"3   9",
 		"3   3"}
-	parsed := utils.ParseLines(data)
+	parsed := utils.ParseColumns(data)
 
 	expected := 31
 

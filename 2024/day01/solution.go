@@ -46,7 +46,7 @@ func Run() {
 	if err != nil {
 		panic(err)
 	}
-	parsed := utils.ParseLines(inputLines)
+	parsed := utils.ParseColumns(inputLines)
 
 	part1Result := Part1(parsed[0], parsed[1])
 	part2Result := Part2(parsed[0], parsed[1])

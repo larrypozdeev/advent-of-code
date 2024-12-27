@@ -22,7 +22,7 @@ func TestPart1(t *testing.T) {
 		"8 6 4 4 1",
 		"1 3 6 7 9",
 	}
-	parsed := utils.ParseLines(data)
+	parsed := utils.ParseColumns(data)
 
 	expected := 11
 

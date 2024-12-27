@@ -38,7 +38,7 @@ func ReadLines(fileame string) ([]string, error) {
 	return lines, nil
 }
 
-func ParseLines(lines []string) [][]int {
+func ParseColumns(lines []string) [][]int {
 	if len(lines) == 0 {
 		return nil
 	}
