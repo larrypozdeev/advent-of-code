@@ -6,7 +6,6 @@ import (
 	"testing"
 )
 
-
 func TestReadLines(t *testing.T) {
 	// Create a temporary file and write some lines to it
 	tempFile := t.TempDir() + "/testfile.txt"
@@ -28,18 +27,26 @@ func TestReadLines(t *testing.T) {
 }
 
 func TestParseLines(t *testing.T) {
-	lines := []string{"1  2", "3   4", "5 6"}
-	left, right := ParseLines(lines)
+  lines1 := []string{"1", "2", "3"}
+  parsed1 := ParseLines(lines1)
+  expected1 := [][]int{{1, 2, 3}}
+  if !reflect.DeepEqual(parsed1, expected1) {
+    t.Errorf("Expected %v, got %v", expected1, parsed1)
+  }
 
-	expectedLeft := []int{1, 3, 5}
-	expectedRight := []int{2, 4, 6}
+	lines2 := []string{"1  2", "3   4", "5 6"}
+	parsed2 := ParseLines(lines2)
 
-	if !reflect.DeepEqual(left, expectedLeft) {
-		t.Errorf("Expected left %v, got %v", expectedLeft, left)
+	expected2 := [][]int{{1, 3, 5}, {2, 4, 6}}
+
+	if !reflect.DeepEqual(parsed2, expected2) {
+		t.Errorf("Expected %v, got %v", expected2, parsed2)
 	}
 
-	if !reflect.DeepEqual(right, expectedRight) {
-		t.Errorf("Expected right %v, got %v", expectedRight, right)
+	lines3 := []string{"1 2 3", "4 5 6", "7 8 9"}
+  expected3 := [][]int{{1, 4, 7}, {2, 5, 8}, {3, 6, 9}}
+	parsed3 := ParseLines(lines3)
+	if !reflect.DeepEqual(parsed3, expected3) {
+		t.Errorf("Expected %v, got %v", expected3, parsed3)
 	}
 }
-

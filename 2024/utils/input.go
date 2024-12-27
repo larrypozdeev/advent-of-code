@@ -11,12 +11,12 @@ import (
 )
 
 func ReadInputFile(target_filename string) string {
-  // 0 caller - current input.go file, 1 caller - solution.go file
+	// 0 caller - current input.go file, 1 caller - solution.go file
 	_, filename, _, _ := runtime.Caller(1)
 	scriptDir := filepath.Dir(filename)
 
 	inputFilePath := filepath.Join(scriptDir, target_filename)
-  return inputFilePath
+	return inputFilePath
 }
 
 func ReadLines(fileame string) ([]string, error) {
@@ -38,24 +38,31 @@ func ReadLines(fileame string) ([]string, error) {
 	return lines, nil
 }
 
-func ParseLines(lines []string) ([]int, []int) {
-	var left []int
-	var right []int
-	for _, line := range lines {
+func ParseLines(lines []string) [][]int {
+	if len(lines) == 0 {
+		return nil
+	}
+
+	// parse the first line to determine the number of columns
+	firstLineParts := strings.Fields(lines[0])
+	numCols := len(firstLineParts)
+
+	result := make([][]int, numCols)
+	for i := range result {
+		result[i] = make([]int, len(lines))
+	}
+
+	for rowIndex, line := range lines {
 		parts := strings.Fields(line)
-
-		ints := make([]int, len(parts))
-
-		for i, part := range parts {
+		for colIndex, part := range parts {
 			num, err := strconv.Atoi(part)
 			if err != nil {
 				fmt.Println("Error converting string to int:", err)
-				return nil, nil
+				return nil
 			}
-			ints[i] = num
+			result[colIndex][rowIndex] = num
 		}
-		left = append(left, ints[0])
-		right = append(right, ints[1])
 	}
-	return left, right
+
+	return result
 }

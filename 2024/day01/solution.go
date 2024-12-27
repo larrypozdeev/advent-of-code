@@ -46,10 +46,10 @@ func Run() {
 	if err != nil {
 		panic(err)
 	}
-	left, right := utils.ParseLines(inputLines)
+	parsed := utils.ParseLines(inputLines)
 
-	part1Result := Part1(left, right)
-	part2Result := Part2(left, right)
+	part1Result := Part1(parsed[0], parsed[1])
+	part2Result := Part2(parsed[0], parsed[1])
 
 	fmt.Println("Part 1 result:", part1Result)
 	fmt.Println("Part 2 result:", part2Result)
