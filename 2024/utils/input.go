@@ -66,3 +66,25 @@ func ParseColumns(lines []string) [][]int {
 
 	return result
 }
+
+func ParseRows(lines []string) [][]int {
+	if len(lines) == 0 {
+		return nil
+	}
+
+	result := make([][]int, len(lines))
+
+	for i := 0; i < len(lines); i++ {
+		parts := strings.Fields(lines[i])
+		result[i] = make([]int, len(parts))
+		for j := 0; j < len(parts); j++ {
+			num, err := strconv.Atoi(parts[j])
+			if err != nil {
+				fmt.Println("Error converting string to int:", err)
+				return nil
+			}
+			result[i][j] = num
+		}
+	}
+	return result
+}

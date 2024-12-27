@@ -27,12 +27,12 @@ func TestReadLines(t *testing.T) {
 }
 
 func TestParseLines(t *testing.T) {
-  lines1 := []string{"1", "2", "3"}
-  parsed1 := ParseColumns(lines1)
-  expected1 := [][]int{{1, 2, 3}}
-  if !reflect.DeepEqual(parsed1, expected1) {
-    t.Errorf("Expected %v, got %v", expected1, parsed1)
-  }
+	lines1 := []string{"1", "2", "3"}
+	parsed1 := ParseColumns(lines1)
+	expected1 := [][]int{{1, 2, 3}}
+	if !reflect.DeepEqual(parsed1, expected1) {
+		t.Errorf("Expected %v, got %v", expected1, parsed1)
+	}
 
 	lines2 := []string{"1  2", "3   4", "5 6"}
 	parsed2 := ParseColumns(lines2)
@@ -44,8 +44,31 @@ func TestParseLines(t *testing.T) {
 	}
 
 	lines3 := []string{"1 2 3", "4 5 6", "7 8 9"}
-  expected3 := [][]int{{1, 4, 7}, {2, 5, 8}, {3, 6, 9}}
+	expected3 := [][]int{{1, 4, 7}, {2, 5, 8}, {3, 6, 9}}
 	parsed3 := ParseColumns(lines3)
+	if !reflect.DeepEqual(parsed3, expected3) {
+		t.Errorf("Expected %v, got %v", expected3, parsed3)
+	}
+}
+
+func TestParseRows(t *testing.T) {
+	lines1 := []string{"1", "2", "3"}
+	parsed1 := ParseRows(lines1)
+	expected1 := [][]int{{1}, {2}, {3}}
+	if !reflect.DeepEqual(parsed1, expected1) {
+		t.Errorf("Expected %v, got %v", expected1, parsed1)
+	}
+
+	lines2 := []string{"1 2", "3 4", "5 6"}
+	parsed2 := ParseRows(lines2)
+	expected2 := [][]int{{1, 2}, {3, 4}, {5, 6}}
+	if !reflect.DeepEqual(parsed2, expected2) {
+		t.Errorf("Expected %v, got %v", expected2, parsed2)
+	}
+
+	lines3 := []string{"1 2 3", "4 5 6", "7 8 9"}
+	parsed3 := ParseRows(lines3)
+	expected3 := [][]int{{1, 2, 3}, {4, 5, 6}, {7, 8, 9}}
 	if !reflect.DeepEqual(parsed3, expected3) {
 		t.Errorf("Expected %v, got %v", expected3, parsed3)
 	}
